@@ -1,7 +1,7 @@
 <template>
   <div class="Main">
-    <div class="m-0 p-0">
-      <img class="w-full h-auto" :src="resultImg" />
+    <div class="result-title">
+      <h1 class="m-0 p-0 text-3xl font-bold text-yellow-100">{{ resultTitle }}</h1>
     </div>
     <ResultCard>
       <template #role>
@@ -92,20 +92,17 @@ import { useGameStore } from "../stores/game";
 const game = useGameStore();
 const router = useRouter();
 
-const UNDERCOVER_WIN_IMG = "/src/assets/undercover-win.png";
-const CIVILIAN_WIN_IMG = "/src/assets/civilian-win.png";
-
 const undercoverWord = ref("");
 const civilianWord = ref("");
 
 const undercoverPlayerList: Ref<any> = ref([]);
 const civilianPlayerList: Ref<any> = ref([]);
 
-const resultImg = computed(() => {
+const resultTitle = computed(() => {
   if (game.result.winner === "civilian") {
-    return CIVILIAN_WIN_IMG;
+    return '平民胜利';
   } else {
-    return UNDERCOVER_WIN_IMG;
+    return '卧底胜利';
   }
 });
 
@@ -129,4 +126,12 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.result-title {
+  @apply w-full min-h-[121px] mb-4 pt-10 text-center;
+  background-image: url("/src/assets/win-bg.png");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+</style>

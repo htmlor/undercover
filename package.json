@@ -1,0 +1,43 @@
+{
+  "name": "undercover",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@iconify-icons/material-symbols": "^1.2.25",
+    "@iconify/vue": "^4.0.2",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@vueuse/components": "^9.12.0",
+    "@vueuse/core": "^9.12.0",
+    "daisyui": "^2.47.0",
+    "pinia": "^2.0.28",
+    "tdesign-icons-vue-next": "^0.1.7",
+    "tdesign-vue-next": "^1.0.2",
+    "vue": "^3.2.45",
+    "vue-i18n": "9.2.2",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^3.0.1",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "autoprefixer": "^10.4.13",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.20",
+    "postcss-custom-properties": "^13.1.1",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "tailwindcss": "^3.3.0",
+    "terser": "^5.16.1",
+    "unplugin-auto-import": "^0.12.1",
+    "unplugin-vue-components": "^0.22.12",
+    "vite": "^4.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
+}

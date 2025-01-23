@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "MiSans VF", MiSans, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji" !important;
+}
+
+.has-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  background: transparent;
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.has-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:root {
+  --theme-yellow: rgb(255, 202, 50);
+  --theme-gray: rgb(182, 182, 182);
+  --theme-blue: rgb(100, 141, 255);
+  --bg-black: rgb(51, 51, 51);
+  --bg-gray: rgb(203, 203, 203);
+}
+
+#bg {
+  background-image: url("/src/assets/bg.png");
+  @apply absolute top-0 left-0 right-0 bottom-0 h-screen overflow-hidden  bg-center bg-repeat bg-contain z-0;
+}
+
+#app,
+.Main {
+  background-image: url("/src/assets/bg.png");
+  @apply bg-center bg-repeat bg-contain z-10 overflow-x-hidden border-gray-400 absolute left-0 right-0 top-0 bottom-0 w-full min-h-screen px-4 py-6 mx-auto my-0 max-w-[425px] overflow-y-auto;
+}
+/* 图片资源预加载 */
+#app::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url("/src/assets/logo.png ")
+    url("/src/assets/bg.png ")
+    url("/src/assets/card-eliminated.png")
+    url("/src/assets/card-viewed.png")
+    url("/src/assets/card.png")
+    url("/src/assets/civilian-win.png")
+    url("/src/assets/undercover-win.png")
+    url("/src/assets/text-bg.png")
+    url("/src/assets/text-setting.png");
+}
+
+/* .modal {
+  position: absolute;
+} */
+
+.game-btn {
+  background-color: var(--theme-yellow);
+  @apply block px-6 py-2 text-lg font-bold rounded-3xl border-[3px] border-solid border-gray-700 shadow-md max-w-[250px] cursor-pointer;
+}
+
+.game-btn.game-btn-small {
+  @apply max-w-[200px];
+}
+
+.game-btn.disabled {
+  background-color: var(--theme-gray) !important;
+  @apply !cursor-not-allowed !border-[var(--theme-gray)];
+}
+
+.stroke {
+  color: var(--font-color);
+  letter-spacing: 0;
+  font-weight: 700;
+  text-shadow: var(--stroke-color) 4px 0 0,
+    var(--stroke-color) 3.87565px 0.989616px 0,
+    var(--stroke-color) 3.51033px 1.9177px 0,
+    var(--stroke-color) 2.92676px 2.72656px 0,
+    var(--stroke-color) 2.16121px 3.36588px 0,
+    var(--stroke-color) 1.26129px 3.79594px 0,
+    var(--stroke-color) 0.282949px 3.98998px 0,
+    var(--stroke-color) -0.712984px 3.93594px 0,
+    var(--stroke-color) -1.66459px 3.63719px 0,
+    var(--stroke-color) -2.51269px 3.11229px 0,
+    var(--stroke-color) -3.20457px 2.39389px 0,
+    var(--stroke-color) -3.69721px 1.52664px 0,
+    var(--stroke-color) -3.95997px 0.56448px 0,
+    var(--stroke-color) -3.97652px -0.432781px 0,
+    var(--stroke-color) -3.74583px -1.40313px 0,
+    var(--stroke-color) -3.28224px -2.28625px 0,
+    var(--stroke-color) -2.61457px -3.02721px 0,
+    var(--stroke-color) -1.78435px -3.57996px 0,
+    var(--stroke-color) -0.843183px -3.91012px 0,
+    var(--stroke-color) 0.150409px -3.99717px 0,
+    var(--stroke-color) 1.13465px -3.8357px 0,
+    var(--stroke-color) 2.04834px -3.43574px 0,
+    var(--stroke-color) 2.83468px -2.82216px 0,
+    var(--stroke-color) 3.44477px -2.03312px 0,
+    var(--stroke-color) 3.84068px -1.11766px 0,
+    var(--stroke-color) 3.9978px -0.132717px 0;
+}

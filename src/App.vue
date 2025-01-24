@@ -14,7 +14,6 @@
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useGameStore } from "./stores/game";
-import face from "./assets/data/face.json";
 
 const router = useRouter();
 const game = useGameStore();
@@ -36,13 +35,6 @@ router.beforeEach((to, from) => {
 
 onMounted(() => {
   game.reset();
-  setTimeout(() => {
-    // 预请求 face 中的图片
-    face.forEach((item) => {
-      const img = new Image();
-      img.src = item;
-    });
-  }, 1);
 
   // 禁止网页右键、长按
   document.addEventListener("contextmenu", (e) => e.preventDefault());

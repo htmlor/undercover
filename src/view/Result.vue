@@ -1,8 +1,9 @@
 <template>
   <div class="Main">
     <div class="result-title">
-      <h1 class="m-0 p-0 text-3xl font-bold text-yellow-100">{{ resultTitle }}</h1>
+      <h1 class="m-0 p-0 stroke-text stroke">{{ resultTitle }}</h1>
     </div>
+
     <ResultCard>
       <template #role>
         <span>卧底</span>
@@ -14,21 +15,17 @@
       </template>
       <template #default>
         <div
-          class="w-1/4 mb-2"
+          class="w-1/5 mb-3 items-center"
           v-for="(item, index) of undercoverPlayerList"
           :key="`${index}-${item.word}`"
         >
-          <img
-            :key="`${index}-${item.word}`"
-            class="mx-auto rounded-full mb-1 h-10 w-10"
-            :src="item.face"
-          />
-          <div class="text-base mt-0 text-center">
+          <div class="player-face undercover">
             {{ item.id + 1 + "号" }}
           </div>
         </div>
       </template>
     </ResultCard>
+
     <ResultCard>
       <template #role>
         <span>平民</span>
@@ -40,21 +37,17 @@
       </template>
       <template #default>
         <div
-          class="w-1/4 mb-2"
+          class="w-1/5 mb-3 items-center"
           v-for="(item, index) of civilianPlayerList"
           :key="`${index}-${item.word}`"
         >
-          <img
-            :key="`${index}-${item.word}`"
-            class="mx-auto rounded-full mb-1 h-10 w-10"
-            :src="item.face"
-          />
-          <div class="text-base mt-0 text-center">
+          <div class="player-face">
             {{ item.id + 1 + "号" }}
           </div>
         </div>
       </template>
     </ResultCard>
+
     <div class="w-full mt-8 text-center space-y-2">
       <span
         class="game-btn mx-auto"
@@ -128,10 +121,24 @@ onMounted(() => {
 
 <style scoped>
 .result-title {
-  @apply w-full min-h-[121px] mb-4 pt-10 text-center;
   background-image: url("/src/assets/win-bg.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: contain;
+  @apply w-full min-h-[121px] mb-4 pt-5 text-center text-4xl text-yellow-100 font-bold italic;
+}
+.stroke-text {
+  --stroke-color: #333;
+}
+.player-face {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid #333;
+  background-color: rgb(255, 202, 50);
+  @apply mx-auto rounded-full pt-3 text-center;
+}
+.undercover{
+  background-color: #666;
+  color: #fff;
 }
 </style>

@@ -1,18 +1,19 @@
 <template>
   <div v-if="game.isStartGame" class="Main">
-    <div class="w-full mb-12 v-align-middle">
-      <div class="float-left w-fit bg-black rounded-lg">
+    <div class="w-full mb-12">
+      <div class="float-left w-fit h-[30px] bg-black rounded-lg">
         <router-link :to="{ name: 'setting' }">
           <ChevronLeftIcon class="text-3xl font-bold text-white" />
         </router-link>
       </div>
-      <h3 class="float-left w-[calc(100%-64px)] m-0 p-0 v-align-bottom font-medium text-white text-center">
+      <div class="float-left w-[calc(100%-64px)] h-[30px] m-0 p-0 font-medium text-white text-center">
         {{
           gameIsOn ? "长按或双击投票出局" : "一人看一张牌 不许偷看"
         }}
-      </h3>
-      <div class="float-right w-fit bg-black rounded-lg"></div>
+      </div>
+      <div class="float-right w-fit h-[30px] bg-black rounded-lg"></div>
     </div>
+
     <!-- 游戏区 -->
     <div v-if="gameWords.length" class="flex flex-row flex-wrap w-full my-6">
       <div
@@ -62,15 +63,7 @@
           <!-- 已查看 -->
           <div v-else class="absolute text-black w-full text-center">
             <!-- 卡片任务头像 -->
-            <!-- <img :key="`${index}-${item.word}`" class="words-face !h-20 !w-20" :src="getRandomFace(index)" /> -->
-            <div
-              :key="`${index}-${item.word}`"
-              class="words-face !h-20 !w-20 bg-cover bg-center"
-              :style="{
-                backgroundImage: `url(${getRandomFace(index)})`,
-              }"
-            />
-            <div class="text-lg mt-0 text-center">
+            <div class="player-face viewed">
               {{ index + 1 + "号" }}
             </div>
             <div
@@ -89,7 +82,7 @@
           <!-- 调试专用 -->
           <div
             v-if="game.isDebugMode"
-            class="stroke debug-text text-lg absolute bottom-6"
+            class="debug-text text-lg absolute top-2 text-sm"
           >
             {{ item.isUndercover ? (item.isBlank ? "白板" : "卧底") : "平民" }}
           </div>
@@ -104,6 +97,7 @@
         />
       </div>
     </div>
+
     <!-- 弹出框 -->
     <input
       ref="gameModalRef"
@@ -113,20 +107,10 @@
     />
     <div class="modal flex flex-col justify-center items-center">
       <div class="words-modal modal-box relative">
-        <div class="w-full mt-2">
-          <img
-            :key="`${currentViewId}-${currentViewText}`"
-            class="words-face"
-            :src="getRandomFace(currentViewId)"
-          />
-          <div class="text-base mt-0 mb-5 text-center">
-            {{ currentViewId + 1 + "号" }}
-          </div>
+        <div class="player-face">
+          {{ currentViewId + 1 + "号" }}
         </div>
-        <h2 class="words-title font-bold text-lg mb-2 text-center">
-          {{ currentViewId + 1 }}号词语
-        </h2>
-        <p class="py-4 text-4xl text-center w-full font-bold">
+        <p class="py-4 text-3xl text-center w-full font-bold">
           {{ currentViewText }}
         </p>
       </div>
@@ -158,7 +142,6 @@ import {
 } from "tdesign-icons-vue-next";
 import { useGameStore } from "../stores/game";
 import { randomNumber, GameWord } from "../utils";
-import face from "../assets/data/face.json";
 
 const router = useRouter();
 const route = useRoute();
@@ -247,7 +230,6 @@ const eliminate = (item: GameWord, index: number) => {
     game.result.gameWords = gameWords.value.map((item, index) => {
       return {
         ...item,
-        face: getRandomFace(index),
         id: index,
       };
     });
@@ -256,13 +238,6 @@ const eliminate = (item: GameWord, index: number) => {
     }, 500);
     //router.push({ name: "result" });
   }
-};
-
-const randomFaceOffset = randomNumber(face.length);
-const getRandomFace = (id: number) => {
-  // 随机偏移，防止每次都是同一个人的头像
-  const n = (id + randomFaceOffset) % face.length;
-  return face[n];
 };
 
 const init = () => {
@@ -313,44 +288,45 @@ onMounted(() => {
 .game-btn.btn-small {
   @apply text-sm px-3 py-1;
 }
-
 :global(.game-btn.btn-theme-blue) {
   background-color: var(--theme-blue);
   @apply !px-6;
 }
-
 .stroke-text {
   --font-color: rgb(238, 223, 255);
   --stroke-color: rgb(102, 57, 220);
 }
-
 .debug-text {
   --font-color: #fff;
   --stroke-color: #333;
 }
-
 .modal {
   --tw-bg-opacity: 0.6;
 }
-
 .words-modal {
-  height: 20rem;
-  width: 16rem;
+  width: 14rem;
+  height: 18rem;
 }
-
-.words-title {
-  background-image: url("/src/assets/text-bg.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.player-face {
+  width: 6rem;
+  height: 6rem;
+  border: 3px solid #333;
+  background-color: rgb(255, 202, 50);
+  @apply mx-auto rounded-full mt-8 mb-6 pt-7 text-center text-2xl font-bold;
 }
-
+.viewed {
+  width: 4rem;
+  height: 4rem;
+  background-color: #fff;
+  border-color: #666;
+  color: #666;
+  @apply mt-4 pt-4 text-xl;
+}
 .words-face {
   width: 6rem;
   height: 6rem;
   @apply mx-auto rounded-full mb-1;
 }
-
 .game-card::after {
   content: "";
   position: absolute;
@@ -358,7 +334,7 @@ onMounted(() => {
   left: 0.75rem;
   width: calc(100% - 1.5rem);
   height: calc(100% - 1.5rem);
-  background-image: url("/src/assets/card-eliminated.png");
+  background-image: url("../src/assets/card-eliminated.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -366,7 +342,6 @@ onMounted(() => {
   z-index: 10;
   @apply transition-opacity duration-150 pointer-events-none;
 }
-
 .game-card.game-eliminated::after {
   opacity: 1;
 }

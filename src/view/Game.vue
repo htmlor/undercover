@@ -329,7 +329,7 @@ onMounted(() => {
   left: 0.75rem;
   width: calc(100% - 1.5rem);
   height: calc(100% - 1.5rem);
-  background-image: url("../src/assets/card-eliminated.png");
+  background-image: url("/static/card-eliminated.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -348,9 +348,9 @@ onMounted(() => {
   @apply w-[100%] min-h-[12rem];
 }
 .card-viewed {
-  background-image: url("../src/assets/card-viewed.png");
+  background-image: url("/static/card-viewed.png");
 }
 .card-unviewed {
-  background-image: url("../src/assets/card.png");
+  background-image: url("/static/card.png");
 }
 </style>

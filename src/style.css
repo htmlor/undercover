@@ -31,7 +31,7 @@
 
 #bg {
   background-color: rgb(82, 116, 209);
-  background-image: url("../src/assets/bg.png");
+  background-image: url("/static/bg.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -41,7 +41,7 @@
 #app,
 .Main {
   background-color: rgb(82, 116, 209);
-  background-image: url("../src/assets/bg.png");
+  background-image: url("/static/bg.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -54,10 +54,10 @@
   height: 0;
   overflow: hidden;
   z-index: -1;
-  content: url("../src/assets/logo.png ")
-    url("../src/assets/card-eliminated.png")
-    url("../src/assets/card-viewed.png")
-    url("../src/assets/card.png")
+  content: url("/static/logo.png ")
+    url("/static/card-eliminated.png")
+    url("/static/card-viewed.png")
+    url("/static/card.png")
 }
 
 /* .modal {

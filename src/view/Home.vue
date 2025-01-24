@@ -2,7 +2,7 @@
   <div class="Main">
     <div class="w-full">
       <div class="flex justify-center items-center">
-        <img class="w-full h-auto max-w-[400px] mx-auto" src="../assets/logo.png" alt="谁是卧底" />
+        <img class="w-full h-auto max-w-[400px] mx-auto" src="/static/logo.png" alt="谁是卧底" />
       </div>
       <div class="w-full text-center">
         <router-link

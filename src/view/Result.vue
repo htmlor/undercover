@@ -121,7 +121,7 @@ onMounted(() => {
 
 <style scoped>
 .result-title {
-  background-image: url("/src/assets/win-bg.png");
+  background-image: url("../assets/win-bg.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: contain;

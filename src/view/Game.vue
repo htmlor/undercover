@@ -91,8 +91,8 @@
           class="w-full h-auto"
           :src="
             item.isViewed
-              ? '/src/assets/card-viewed.png'
-              : '/src/assets/card.png'
+              ? '../src/assets/card-viewed.png'
+              : '../src/assets/card.png'
           "
         />
       </div>

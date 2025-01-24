@@ -30,14 +30,22 @@
 }
 
 #bg {
+  background-color: rgb(82, 116, 209);
   background-image: url("../src/assets/bg.png");
-  @apply absolute top-0 left-0 right-0 bottom-0 h-screen overflow-hidden  bg-center bg-repeat bg-contain z-0;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @apply absolute top-0 left-0 bottom-0 right-0 z-0 overflow-hidden h-screen;
 }
 
 #app,
 .Main {
+  background-color: rgb(82, 116, 209);
   background-image: url("../src/assets/bg.png");
-  @apply bg-center bg-repeat bg-contain z-10 overflow-x-hidden border-gray-400 absolute left-0 right-0 top-0 bottom-0 w-full min-h-screen px-4 py-6 mx-auto my-0 max-w-[425px] overflow-y-auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @apply absolute top-0 left-0 bottom-0 right-0 z-10 overflow-x-hidden overflow-y-auto w-full max-w-[425px] h-screen mx-auto my-0 px-4 py-6 border-gray-400;
 }
 /* 图片资源预加载 */
 #app::after {
@@ -47,7 +55,6 @@
   overflow: hidden;
   z-index: -1;
   content: url("../src/assets/logo.png ")
-    url("../src/assets/bg.png ")
     url("../src/assets/card-eliminated.png")
     url("../src/assets/card-viewed.png")
     url("../src/assets/card.png")

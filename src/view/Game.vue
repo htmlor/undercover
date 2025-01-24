@@ -46,17 +46,13 @@
           { delay: 500 },
         ]"
       >
-        <div
-          class="absolute top-3 bottom-3 left-3 right-3 w-auto h-auto flex justify-center items-center"
-        >
+        <div class="absolute top-3 bottom-3 left-3 right-3 w-auto h-auto flex justify-center items-center">
           <!-- 未查看 -->
           <div
             v-if="!item.isViewed"
-            class="absolute text-4xl font-bold text-white w-full text-center"
+            class="absolute text-3xl font-bold text-white w-full text-center"
           >
-            <div
-              class="stroke-text stroke select-none font-sans w-[1em] mx-auto"
-            >
+            <div class="stroke-text stroke select-none font-sans w-[1em] mx-auto">
               {{ index + 1 }} 号
             </div>
           </div>
@@ -87,14 +83,13 @@
             {{ item.isUndercover ? (item.isBlank ? "白板" : "卧底") : "平民" }}
           </div>
         </div>
-        <img
-          class="w-full h-auto"
-          :src="
+        <div 
+          :class="
             item.isViewed
-              ? '../src/assets/card-viewed.png'
-              : '../src/assets/card.png'
-          "
-        />
+              ? 'card-viewed'
+              : 'card-unviewed'
+          ">
+        </div>
       </div>
     </div>
 
@@ -304,8 +299,8 @@ onMounted(() => {
   --tw-bg-opacity: 0.6;
 }
 .words-modal {
-  width: 14rem;
-  height: 18rem;
+  width: 15rem;
+  height: 19rem;
 }
 .player-face {
   width: 6rem;
@@ -336,13 +331,26 @@ onMounted(() => {
   height: calc(100% - 1.5rem);
   background-image: url("../src/assets/card-eliminated.png");
   background-position: center;
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: contain;
   opacity: 0;
   z-index: 10;
   @apply transition-opacity duration-150 pointer-events-none;
 }
 .game-card.game-eliminated::after {
   opacity: 1;
+}
+.card-viewed, 
+.card-unviewed {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  @apply w-[100%] min-h-[12rem];
+}
+.card-viewed {
+  background-image: url("../src/assets/card-viewed.png");
+}
+.card-unviewed {
+  background-image: url("../src/assets/card.png");
 }
 </style>

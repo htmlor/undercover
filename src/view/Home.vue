@@ -1,8 +1,8 @@
 <template>
   <div class="Main">
     <div class="w-full">
-      <div class="flex justify-center items-center">
-        <img class="w-full h-auto max-w-[400px] mx-auto" src="/static/logo.png" alt="谁是卧底" />
+      <div class="logo-home">
+        <img class="w-full max-w-[20rem] h-auto mx-auto" src="/static/logo.png" alt="谁是卧底" />
       </div>
       <div class="w-full text-center">
         <router-link
@@ -27,4 +27,7 @@ const now = __BUILD_DATE__;
 </script>
 
 <style scoped>
+.logo-home {
+  @apply w-full mx-auto mt-16 mb-10;
+}
 </style>

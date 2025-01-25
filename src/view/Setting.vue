@@ -7,7 +7,7 @@
     </div>
     
     <div class="w-full bg-white rounded-xl border-[3px] border-solid border-gray-700 shadow-md mt-8 p-4">
-      <div class="w-full text-center">
+      <div class="w-full mt-3 text-center">
         <h1 class="text-2xl font-bold">游戏设置</h1>
       </div>
       <div class="w-full mt-8 px-4">
@@ -50,7 +50,9 @@
             </h2>
           </label>
         </div>
+        <div class="w-full mb-6 text-sm text-gray-500">若自定义词语未设置，将自动生成平民词和卧底词。</div>
         <!-- 调试模式 -->
+<!--
         <div class="flex flex-row justify-between items-center border-t border-[var(--td-border-level-1-color)] border-dashed pt-6 mb-6">
           <h2 class="text-lg font-medium">调试模式</h2>
           <RadioGroup v-model="game.isDebugMode">
@@ -58,7 +60,8 @@
             <Radio :value="false">关</Radio>
           </RadioGroup>
         </div>
-      </div>
+-->
+    </div>
     </div>
     <!-- 开始游戏 -->
     <div class="w-full mt-8 text-center">

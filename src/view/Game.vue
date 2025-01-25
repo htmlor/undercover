@@ -15,11 +15,11 @@
     </div>
 
     <!-- 游戏区 -->
-    <div v-if="gameWords.length" class="flex flex-row flex-wrap w-full my-6">
+    <div v-if="gameWords.length" class="cards-container">
       <div
         v-for="(item, index) in gameWords"
         :key="`${index}-${item.word}`"
-        class="game-card w-1/2 p-3 cursor-pointer relative"
+        class="game-card"
         :class="{
           'pointer-events-none game-eliminated': item.isEliminated,
         }"
@@ -46,7 +46,7 @@
           { delay: 500 },
         ]"
       >
-        <div class="absolute top-3 bottom-3 left-3 right-3 w-auto h-auto flex justify-center items-center">
+        <div class="inner">
           <!-- 未查看 -->
           <div
             v-if="!item.isViewed"
@@ -76,19 +76,18 @@
             </div>
           </div>
           <!-- 调试专用 -->
-          <div
-            v-if="game.isDebugMode"
-            class="debug-text text-lg absolute top-2 text-sm"
-          >
+          <div v-if="game.isDebugMode" class="debug-text text-lg absolute top-2 text-sm">
             {{ item.isUndercover ? (item.isBlank ? "白板" : "卧底") : "平民" }}
           </div>
         </div>
+        <!-- 最底的牌面 -->
         <div 
           :class="
             item.isViewed
               ? 'card-viewed'
               : 'card-unviewed'
-          ">
+          "
+        >
         </div>
       </div>
     </div>
@@ -309,12 +308,9 @@ onMounted(() => {
   background-color: rgb(255, 202, 50);
   @apply mx-auto rounded-full mt-8 mb-6 pt-7 text-center text-2xl font-bold;
 }
-.viewed {
+.player-face.viewed {
   width: 4rem;
   height: 4rem;
-  background-color: #fff;
-  border-color: #666;
-  color: #666;
   @apply mt-4 pt-4 text-xl;
 }
 .words-face {
@@ -322,30 +318,34 @@ onMounted(() => {
   height: 6rem;
   @apply mx-auto rounded-full mb-1;
 }
+.cards-container {
+  @apply flex flex-row flex-wrap w-full mt-12 p-0;
+}
+.game-card {
+  @apply relative w-1/2 px-3 py-3;
+}
 .game-card::after {
   content: "";
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  width: calc(100% - 1.5rem);
-  height: calc(100% - 1.5rem);
   background-image: url("/static/card-eliminated.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   opacity: 0;
   z-index: 10;
-  @apply transition-opacity duration-150 pointer-events-none;
+  @apply absolute top-3 left-3 right-3 bottom-3 w-auto h-auto transition-opacity duration-150 pointer-events-none;
 }
 .game-card.game-eliminated::after {
   opacity: 1;
+}
+.game-card .inner {
+  @apply absolute top-0 left-0 right-0 bottom-0 w-auto h-auto flex justify-center items-center cursor-pointer;
 }
 .card-viewed, 
 .card-unviewed {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  @apply w-[100%] min-h-[12rem];
+  @apply w-[100%] min-w-[9rem] min-h-[12rem];
 }
 .card-viewed {
   background-image: url("/static/card-viewed.png");

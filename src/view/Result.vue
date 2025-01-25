@@ -41,7 +41,7 @@
           v-for="(item, index) of civilianPlayerList"
           :key="`${index}-${item.word}`"
         >
-          <div class="player-face">
+          <div class="player-face civilian">
             {{ item.id + 1 + "号" }}
           </div>
         </div>
@@ -134,11 +134,14 @@ onMounted(() => {
   width: 3rem;
   height: 3rem;
   border: 2px solid #333;
-  background-color: rgb(255, 202, 50);
   @apply mx-auto rounded-full pt-3 text-center;
 }
-.undercover{
+.player-face.undercover {
   background-color: #666;
   color: #fff;
+}
+.player-face.civilian {
+  border-color: #333;
+  color: #333;
 }
 </style>

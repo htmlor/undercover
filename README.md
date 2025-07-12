@@ -6,7 +6,7 @@
 - 类型: 多人聚会游戏 Web 应用
 - 技术栈: Vue 3 + Vite + TypeScript + Tailwind CSS + Pinia
 
-## 🛠️ 技术架构
+## 架构
 
 ### 前端框架与工具:
 
@@ -21,6 +21,14 @@
 - TDesign Vue Next - 腾讯设计语言组件库
 - DaisyUI - Tailwind CSS 组件库
 - Tailwind CSS - 原子化 CSS 框架
+
+## 部署
+
+可一键部署到 [Vercel](https://vercel.com/) 或 [Netlify](https://www.netlify.com/) 。
+
+## 自定义词语
+
+修改 /src/assets/data/words.json 即可。
 
 ## 游戏概述
 

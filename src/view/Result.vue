@@ -124,8 +124,17 @@ onMounted(() => {
   background-image: url("/static/win-bg.png");
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: contain;
-  @apply w-full min-h-[121px] mb-4 pt-5 text-center text-4xl text-yellow-100 font-bold italic;
+  background-size: cover;
+  width: 85%;
+  height: 8rem;
+  margin: 0 auto 1.5rem;
+  padding-top: 1.25rem;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 2.5rem;
+  color: rgb(254, 243, 199);
+  font-weight: bold;
+  font-style: italic;
 }
 .stroke-text {
   --stroke-color: #333;
@@ -134,7 +143,11 @@ onMounted(() => {
   width: 3rem;
   height: 3rem;
   border: 2px solid #333;
-  @apply mx-auto rounded-full pt-3 text-center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 9999px;
+  padding-top: 0.75rem;
+  text-align: center;
 }
 .player-face.undercover {
   background-color: #666;

@@ -159,7 +159,7 @@ const gameIsOn = computed(() => {
   return gameWords.value.length > 0 && unViewedWords.value.length === 0;
 });
 
-const showCardModal = (item: GameWord, index) => {
+const showCardModal = (item: GameWord, index: number) => {
   if (item.isViewed && item.isReviewed) return;
   if (item.isEliminated) return;
   currentViewId.value = index;
@@ -280,11 +280,17 @@ onMounted(() => {
 
 <style scoped>
 .game-btn.btn-small {
-  @apply text-sm px-3 py-1;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 :global(.game-btn.btn-theme-blue) {
   background-color: var(--theme-blue);
-  @apply !px-6;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
 }
 .stroke-text {
   --font-color: rgb(238, 223, 255);
@@ -306,23 +312,48 @@ onMounted(() => {
   height: 6rem;
   border: 3px solid #333;
   background-color: rgb(255, 202, 50);
-  @apply mx-auto rounded-full mt-8 mb-6 pt-7 text-center text-2xl font-bold;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 9999px;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1.75rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
 }
 .player-face.viewed {
   width: 4rem;
   height: 4rem;
-  @apply mt-4 pt-4 text-xl;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .words-face {
   width: 6rem;
   height: 6rem;
-  @apply mx-auto rounded-full mb-1;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 9999px;
+  margin-bottom: 0.25rem;
 }
 .cards-container {
-  @apply flex flex-row flex-wrap w-full mt-12 p-0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 0;
 }
 .game-card {
-  @apply relative w-1/2 px-3 py-3;
+  position: relative;
+  width: 50%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 .game-card::after {
   content: "";
@@ -332,20 +363,41 @@ onMounted(() => {
   background-size: contain;
   opacity: 0;
   z-index: 10;
-  @apply absolute top-3 left-3 right-3 bottom-3 w-auto h-auto transition-opacity duration-150 pointer-events-none;
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  width: auto;
+  height: auto;
+  transition-property: opacity;
+  transition-duration: 150ms;
+  pointer-events: none;
 }
 .game-card.game-eliminated::after {
   opacity: 1;
 }
 .game-card .inner {
-  @apply absolute top-0 left-0 right-0 bottom-0 w-auto h-auto flex justify-center items-center cursor-pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-.card-viewed, 
+.card-viewed,
 .card-unviewed {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  @apply w-[100%] min-w-[9rem] min-h-[12rem];
+  width: 100%;
+  min-width: 9rem;
+  min-height: 12rem;
 }
 .card-viewed {
   background-image: url("/static/card-viewed.png");

@@ -43,7 +43,7 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style>
 .slide-left-enter-active,
 .slide-right-enter-active,
 .slide-left-leave-active,
@@ -89,11 +89,21 @@ onMounted(() => {
 
 .Main::after {
   content: "";
-  @apply pointer-events-none opacity-0 absolute top-0 left-0 right-0 bottom-0 z-0 bg-black/40 transition-opacity duration-150;
+  pointer-events: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition-property: opacity;
+  transition-duration: 150ms;
 }
 
 .Main.slide-left-leave-to::after,
 .Main.slide-right-leave-to::after {
-  @apply opacity-100;
+  opacity: 1;
 }
 </style>

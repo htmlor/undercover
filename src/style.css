@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
 
 * {
   font-family: "MiSans VF", MiSans, ui-sans-serif, system-ui, sans-serif,
@@ -31,7 +30,14 @@
 
 #bg {
   background-color: rgb(82, 116, 209);
-  @apply absolute top-0 left-0 bottom-0 right-0 z-0 overflow-hidden h-screen;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  overflow: hidden;
+  height: 100vh;
 }
 
 #app,
@@ -41,7 +47,26 @@
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-  @apply absolute top-0 left-0 bottom-0 right-0 z-10 overflow-x-hidden overflow-y-auto w-full max-w-[425px] h-screen mx-auto my-0 px-4 py-6 border-gray-400;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 425px;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-color: rgb(156, 163, 175);
 }
 /* 图片资源预加载 */
 #app::after {
@@ -62,16 +87,31 @@
 
 .game-btn {
   background-color: var(--theme-yellow);
-  @apply block px-6 py-2 text-lg font-bold rounded-3xl border-[3px] border-solid border-gray-700 shadow-md max-w-[250px] cursor-pointer;
+  display: block;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  border-width: 3px;
+  border-style: solid;
+  border-color: rgb(55, 65, 81);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 250px;
+  cursor: pointer;
 }
 
 .game-btn.game-btn-small {
-  @apply max-w-[200px];
+  max-width: 200px;
 }
 
 .game-btn.disabled {
   background-color: var(--theme-gray) !important;
-  @apply !cursor-not-allowed !border-[var(--theme-gray)];
+  cursor: not-allowed !important;
+  border-color: var(--theme-gray) !important;
 }
 
 .stroke {

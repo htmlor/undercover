@@ -28,6 +28,10 @@ const now = __BUILD_DATE__;
 
 <style scoped>
 .logo-home {
-  @apply w-full mx-auto mt-16 mb-10;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+  margin-bottom: 2.5rem;
 }
 </style>

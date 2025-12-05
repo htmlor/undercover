@@ -186,7 +186,7 @@ game.handleStartGame = handleStartGame;
 </script>
 
 <style scoped>
-/* 
+/*
   :deep is a CSS combinator that allows you to target elements that are deeply nested within other elements.
   It is a shorthand for the >>> combinator, which is part of the Shadow DOM specification.
   It is supported in Vue 3, but not in Vue 2.
@@ -201,13 +201,17 @@ game.handleStartGame = handleStartGame;
   }
 */
 .t-input-number {
-  @apply w-24 h-8;
+  width: 6rem;
+  height: 2rem;
 }
 :deep(.t-input-number .t-input-number__decrease),
 :deep(.t-input-number .t-input-number__increase) {
   background-color: var(--theme-yellow);
   border-color: var(--bg-black);
-  @apply rounded-full border-2 border-solid  shadow-lg;
+  border-radius: 9999px;
+  border-width: 2px;
+  border-style: solid;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 :deep(.t-input-number .t-input-number__decrease.t-is-disabled:hover),
 :deep(.t-input-number .t-input-number__increase.t-is-disabled:hover) {
@@ -218,24 +222,34 @@ game.handleStartGame = handleStartGame;
   width: calc(100% - 32px);
   left: 16px;
   background-color: var(--bg-black);
-  @apply absolute  h-full;
+  position: absolute;
+  height: 100%;
 }
 :deep(.t-input-number .t-input) {
   background-color: var(--bg-black);
-  @apply border-none p-0;
+  border: none;
+  padding: 0;
 }
 :deep(.t-input-number .t-input__inner) {
-  @apply text-white font-normal text-center text-base;
+  color: white;
+  font-weight: normal;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 :deep(.t-input-number .t-button:not(.t-is-disabled) .t-icon) {
   color: var(--bg-black);
 }
 :deep(.t-input-number .t-button .t-icon) {
-  @apply text-2xl font-bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
 }
 :deep(.t-radio__input) {
   border-color: var(--bg-black) !important;
-  @apply border-2 border-solid rounded-full;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 9999px;
 }
 :deep(.t-radio .t-radio__input) {
   width: 20px;
@@ -253,21 +267,32 @@ game.handleStartGame = handleStartGame;
   margin-left: -10px;
 }
 :deep(.t-radio-group .t-radio) {
-  @apply mr-4 last:mr-0;
+  margin-right: 1rem;
+}
+:deep(.t-radio-group .t-radio:last-child) {
+  margin-right: 0;
 }
 :deep(.t-input) {
   background-color: rgb(238, 238, 238);
-  @apply w-full border-none px-4 py-6 rounded-lg;
+  width: 100%;
+  border: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 0.5rem;
 }
 :deep(.t-input .t-input__prefix) {
-  @apply font-medium text-gray-500;
+  font-weight: 500;
+  color: rgb(107, 114, 128);
 }
 :deep(.t-input .t-input__prefix),
 :deep(.t-input .t-input__inner) {
-  @apply text-base;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 :deep(.t-input .t-input__prefix:not(:empty)) {
-  @apply mr-4;
+  margin-right: 1rem;
 }
 :deep(.t-input--focused) {
   box-shadow: none;

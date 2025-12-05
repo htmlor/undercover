@@ -22,6 +22,9 @@
 .role-text::before {
   content: "▋";
   color: rgb(100, 141, 255);
-  @apply rounded-lg mr-1 text-sm;
+  border-radius: 0.5rem;
+  margin-right: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 </style>

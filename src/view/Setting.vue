@@ -75,8 +75,8 @@
       :id="settingModalId"
       class="modal-toggle"
     />
-    <div class="modal">
-      <div class="modal-box">
+    <div class="modal flex flex-col justify-center items-center">
+      <div class="customized modal-box">
         <h2 class="font-bold text-lg text-center">自定义词语</h2>
         <div class="absolute top-2 right-2 z-50">
           <label
@@ -134,6 +134,7 @@ const game = useGameStore();
 
 const settingModalId = "setting-modal";
 const modalRef = ref<HTMLInputElement | null>(null);
+const modalElement = ref<HTMLDivElement | null>(null);
 
 const customCivilianWord = ref("");
 const customUndercoverWord = ref("");
@@ -158,6 +159,16 @@ const isSetCustomWords = computed(() => {
   return customCivilianWord.value && customUndercoverWord.value;
 });
 
+const handleModalToggle = () => {
+  if (modalRef.value && modalElement.value) {
+    if (modalRef.value.checked) {
+      modalElement.value.classList.add('is-open');
+    } else {
+      modalElement.value.classList.remove('is-open');
+    }
+  }
+};
+
 const handleCustomWords = () => {
   if (isSetCustomWords.value) {
     game.isCustomWordMode = true;
@@ -166,6 +177,7 @@ const handleCustomWords = () => {
     game.selectedWordId = -1;
     if (modalRef.value) {
       modalRef.value.checked = false;
+      handleModalToggle(); // 确保弹窗关闭
     }
   }
 };
@@ -203,6 +215,9 @@ game.handleStartGame = handleStartGame;
 .t-input-number {
   width: 6rem;
   height: 2rem;
+}
+.customized {
+  height: 18rem;
 }
 :deep(.t-input-number .t-input-number__decrease),
 :deep(.t-input-number .t-input-number__increase) {

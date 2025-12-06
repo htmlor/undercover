@@ -36,3 +36,16 @@ desktop.ini
 .vscode/
 *.swp
 *.swo
+
+# roo code
+.roomodes
+.roo/
+
+# IDEs
+.kiro/
+.cursor/
+.windsurf/
+.vscode/
+
+# docs
+docs/

@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <!-- 弹出框 -->
+    <!-- 牌面文字弹出框 -->
     <input
       ref="gameModalRef"
       type="checkbox"
@@ -311,7 +311,7 @@ onMounted(() => {
   width: 6rem;
   height: 6rem;
   border: 3px solid #333;
-  background-color: rgb(255, 202, 50);
+  background-color: var(--theme-yellow);
   margin-left: auto;
   margin-right: auto;
   border-radius: 9999px;

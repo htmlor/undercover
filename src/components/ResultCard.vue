@@ -21,7 +21,7 @@
 <style scoped>
 .role-text::before {
   content: "▋";
-  color: rgb(100, 141, 255);
+  color: var(--theme-blue);
   border-radius: 0.5rem;
   margin-right: 0.25rem;
   font-size: 0.875rem;

@@ -61,7 +61,7 @@
         快速再来一局
       </span>
       <span
-        class="game-btn mx-auto btn-theme-blue"
+        class="game-btn mx-auto btn-theme-blue text-white"
         @click="
           () => {
             router.push({
